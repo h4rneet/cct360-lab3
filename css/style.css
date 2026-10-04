@@ -1,1 +1,81 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 
+
+body{
+    display: grid;
+    grid-template-columns: 1fr; /*for mobile we want everything in a single column*/
+
+    grid-template-areas: 
+    "hd"
+    "nv"
+    "mn"
+    "ft";
+
+    gap: 20px;
+    padding: 10px;
+}
+
+header{
+    grid-area: hd;
+    background-color: rgb(167, 208, 209);
+}
+
+nav{
+    grid-area: nv;
+    background-color: bisque;
+}
+
+main{
+    grid-area: mn;
+    background-color: rgb(191, 185, 162);
+}
+
+main article:nth-child(1){
+    background-color: rgb(232, 218, 162);
+}
+
+footer{
+    grid-area: ft;
+    background-color: rgb(191, 214, 215);
+}
+
+/* desktop responsiveness */
+
+@media (min-width: 768px) {
+    
+    main{
+        display: grid; /*this setting for body controls the children items of body, but adding it for main will control the children items of main specifically*/ 
+        grid-template-columns: repeat(2, 1fr); /* since we want two columns within main */
+        grid-area: mn;
+    }
+
+    main article:nth-child(1){
+        grid-column: 1/-1; /*card one spans full width*/
+
+    }
+
+    body{
+        display: grid;
+        grid-template-columns: 220px 1fr; 
+        grid-template-areas:
+        "hd hd"
+        "nv mn"
+        "ft ft";
+    }
+
+    header{
+        grid-area: hd;
+    }
+
+    nav{
+        grid-area: nv;
+    }
+
+    footer{
+        grid-area: ft;
+    }
+
+}
